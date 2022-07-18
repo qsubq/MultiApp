@@ -1,8 +1,7 @@
-package com.github.qsubq.multiapp
+package com.github.qsubq.multiapp.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
 import com.github.qsubq.multiapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

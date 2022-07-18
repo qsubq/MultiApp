@@ -2,4 +2,11 @@
     <string name="app_name">MultiApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="author">qsubq</string>
+    <string name="created_by">Created By</string>
+    <string name="humidity">Humidity</string>
+    <string name="pressure">Pressure</string>
+    <string name="wind">Wind</string>
+    <string name="sunset">Sunset</string>
+    <string name="sunrise">Sunrise</string>
 </resources>

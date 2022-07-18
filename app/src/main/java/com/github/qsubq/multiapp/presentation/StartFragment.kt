@@ -1,4 +1,4 @@
-package com.github.qsubq.multiapp.screen
+package com.github.qsubq.multiapp.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
