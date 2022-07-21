@@ -1,11 +1,11 @@
-package com.github.qsubq.multiapp.presentation
+package com.github.qsubq.multiapp.app.presentation.screen
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.github.qsubq.multiapp.AppAdapter
+import com.github.qsubq.multiapp.app.presentation.adapter.AppAdapter
 import com.github.qsubq.multiapp.databinding.FragmentStartBinding
 
 

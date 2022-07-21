@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -37,6 +39,22 @@ android {
 
 
 dependencies {
+    // Javax Inject
+    api("javax.inject:javax.inject:1")
+
+    //Retrofit
+    def retrofitVersion = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    //Hilt
+    def HiltVersion = "2.42"
+    implementation "com.google.dagger:hilt-android:$HiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$HiltVersion"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$HiltVersion"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$HiltVersion"
+    testImplementation "com.google.dagger:hilt-android-testing:$HiltVersion"
+    kaptTest "com.google.dagger:hilt-compiler:$HiltVersion"
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'

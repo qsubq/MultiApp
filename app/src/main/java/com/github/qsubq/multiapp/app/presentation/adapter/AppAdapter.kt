@@ -1,10 +1,11 @@
-package com.github.qsubq.multiapp
+package com.github.qsubq.multiapp.app.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
+import com.github.qsubq.multiapp.R
 import com.github.qsubq.multiapp.databinding.MainItemLayoutBinding
 
 class AppAdapter : RecyclerView.Adapter<AppAdapter.AppViewHolder>() {

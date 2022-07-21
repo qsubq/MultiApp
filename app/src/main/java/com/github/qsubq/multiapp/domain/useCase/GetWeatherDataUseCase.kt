@@ -1,10 +1,8 @@
 package com.github.qsubq.multiapp.domain.useCase
 
 import com.github.qsubq.multiapp.domain.repository.WeatherRepository
+import javax.inject.Inject
 
-class GetWeatherDataUseCase(private val repository: WeatherRepository){
-    fun getWeatherData(): Any{
-        // TODO: change return type
-        return repository.getWeatherData()
-    }
+class GetWeatherDataUseCase @Inject constructor(private val repository: WeatherRepository){
+    suspend operator fun invoke() = repository.getWeatherData()
 }
