@@ -1,6 +1,9 @@
 package com.github.qsubq.multiapp.app.presentation.screen
 
+import android.content.Context
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.VibratorManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,11 +58,13 @@ class WeatherFragment : Fragment() {
         viewModel.errorLiveData.observe(viewLifecycleOwner) { error ->
             view.let {
                 Snackbar.make(it, error, 8000)
+                    .setAction("Try again") {
+                        viewModel.getWeatherInfo()
+                    }
                     .show()
             }
         }
 
         viewModel.getWeatherInfo()
-
     }
 }

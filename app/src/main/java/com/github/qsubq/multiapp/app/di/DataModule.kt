@@ -12,8 +12,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 class DataModule {
-    private val BASE_URL = "https://api.openweathermap.org/"
-
 
     @Provides
     fun provideApiService(retrofit: Retrofit): ApiService {
@@ -27,5 +25,9 @@ class DataModule {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    companion object {
+        private const val BASE_URL = "https://api.openweathermap.org/"
     }
 }
