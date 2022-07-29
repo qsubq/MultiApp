@@ -8,8 +8,8 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(private val api: ApiService) : WeatherRepository {
-    override suspend fun getWeatherData(): NetworkResult<WeatherModel> {
-        return handleApi { api.getWeatherInfo() }
+    override suspend fun getWeatherData(city:String): NetworkResult<WeatherModel> {
+        return handleApi { api.getWeatherInfo(city) }
     }
 
 

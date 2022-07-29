@@ -18,9 +18,9 @@ class WeatherViewModel @Inject constructor(private val GetWeatherDataUseCase: Ge
     var weatherLiveData = MutableLiveData<WeatherModel>()
     var errorLiveData = MutableLiveData<String>()
 
-    fun getWeatherInfo() {
+    fun getWeatherInfo(city:String) {
         viewModelScope.launch {
-            when (val response = GetWeatherDataUseCase.invoke()) {
+            when (val response = GetWeatherDataUseCase.invoke(city)) {
                 is WeatherRepositoryImpl.NetworkResult.Success ->  weatherLiveData.value = response.data
                 is WeatherRepositoryImpl.NetworkResult.Error -> errorLiveData.value = "${response.code} ${response.message}"
                 is WeatherRepositoryImpl.NetworkResult.Exception -> errorLiveData.value = "${response.e.message}"
