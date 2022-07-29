@@ -9,6 +9,8 @@ import androidx.fragment.app.viewModels
 import com.github.qsubq.multiapp.databinding.FragmentWeatherBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 @AndroidEntryPoint
@@ -18,7 +20,7 @@ class WeatherFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentWeatherBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -28,20 +30,32 @@ class WeatherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        viewModel.weatherLiveData.observe(viewLifecycleOwner){
-            binding.locationTv.text = "Saransk"
+        viewModel.weatherLiveData.observe(viewLifecycleOwner) {
+            binding.locationTv.text = it.name
+            binding.updatedAtTv.text =
+                "Updated at: " + SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH).format(Date(
+                    it.dt.toLong() * 1000))
 
-            binding.temp.text = it.main.temp.toString()
-            binding.tempMax.text = it.main.temp_max.toString()
-            binding.tempMin.text = it.main.temp_min.toString()
+            binding.status.text = it.weather[0].description
+
+            binding.temp.text = it.main.temp.toString() + "°C"
+            binding.tempMax.text = "Max Temp: " + it.main.temp_max.toString() + "°C"
+            binding.tempMin.text = "Min Temp: " + it.main.temp_min.toString() + "°C"
+
+            binding.wind.text = it.wind.speed.toString()
             binding.humidity.text = it.main.humidity.toString()
-            binding.sunrise.text = it.sys.sunrise.toString()
-            binding.sunset.text = it.sys.sunset.toString()
+            binding.pressure.text = it.main.pressure.toString()
+            binding.sunrise.text = SimpleDateFormat("hh:mm a",
+                Locale.ENGLISH).format(Date(it.sys.sunrise.toLong() * 1000))
+            binding.sunset.text = SimpleDateFormat("hh:mm a",
+                Locale.ENGLISH).format(Date(it.sys.sunset.toLong() * 1000))
+
         }
 
-        viewModel.errorLiveData.observe(viewLifecycleOwner){error ->
+        viewModel.errorLiveData.observe(viewLifecycleOwner) { error ->
             view.let {
-                Snackbar.make(it, error, 5000).show()
+                Snackbar.make(it, error, 8000)
+                    .show()
             }
         }
 

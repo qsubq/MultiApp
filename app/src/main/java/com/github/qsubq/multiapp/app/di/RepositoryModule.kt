@@ -1,6 +1,6 @@
 package com.github.qsubq.multiapp.app.di
 
-import com.github.qsubq.multiapp.data.remoteDataSource.ApiService
+import com.github.qsubq.multiapp.data.api.ApiService
 import com.github.qsubq.multiapp.data.repository.WeatherRepositoryImpl
 import com.github.qsubq.multiapp.domain.repository.WeatherRepository
 import dagger.Module

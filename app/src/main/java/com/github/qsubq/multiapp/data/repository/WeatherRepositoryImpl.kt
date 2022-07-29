@@ -1,22 +1,21 @@
 package com.github.qsubq.multiapp.data.repository
 
-import com.github.qsubq.multiapp.data.remoteDataSource.ApiService
+import com.github.qsubq.multiapp.data.api.ApiService
 import com.github.qsubq.multiapp.domain.model.WeatherModel
-import com.github.qsubq.multiapp.domain.repository.*
+import com.github.qsubq.multiapp.domain.repository.WeatherRepository
 import retrofit2.HttpException
 import retrofit2.Response
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(private val api: ApiService) : WeatherRepository {
-    override suspend fun getWeatherData(): NetworkResult<WeatherModel>{
+    override suspend fun getWeatherData(): NetworkResult<WeatherModel> {
         return handleApi { api.getWeatherInfo() }
     }
 
 
     private suspend fun <T : Any> handleApi(
-        execute: suspend () -> Response<T>
-    ): NetworkResult<T>
-    {
+        execute: suspend () -> Response<T>,
+    ): NetworkResult<T> {
         return try {
             val response = execute()
             val body = response.body()

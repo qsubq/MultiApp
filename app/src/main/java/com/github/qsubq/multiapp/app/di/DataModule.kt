@@ -1,6 +1,6 @@
 package com.github.qsubq.multiapp.app.di
 
-import com.github.qsubq.multiapp.data.remoteDataSource.ApiService
+import com.github.qsubq.multiapp.data.api.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,18 +11,18 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-class SingletonModule {
+class DataModule {
     private val BASE_URL = "https://api.openweathermap.org/"
 
 
     @Provides
-    fun provideApiService(retrofit: retrofit2.Retrofit): ApiService {
+    fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideRetrofitInstance(): retrofit2.Retrofit {
+    fun provideRetrofitInstance(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
