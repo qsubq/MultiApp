@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.github.qsubq.multiapp.R
 import com.github.qsubq.multiapp.databinding.FragmentWeatherBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +32,7 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tag = WeatherFragment::class.java.toString()
+        binding.detailsContainer.visibility = View.INVISIBLE
 
         viewModel.weatherLiveData.observe(viewLifecycleOwner) {
             binding.location.text = it.name
@@ -50,9 +52,11 @@ class WeatherFragment : Fragment() {
                 Locale.ENGLISH).format(Date(it.sys.sunrise.toLong() * 1000))
             binding.sunset.text = SimpleDateFormat("hh:mm a",
                 Locale.ENGLISH).format(Date(it.sys.sunset.toLong() * 1000))
+
+            binding.detailsContainer.visibility = View.VISIBLE
         }
 
-        binding.searchView.setQuery("Saransk", true)
+        binding.searchView.setQuery(getString(R.string.main_city), true)
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
