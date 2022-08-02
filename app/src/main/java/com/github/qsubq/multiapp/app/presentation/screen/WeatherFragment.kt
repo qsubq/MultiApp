@@ -31,10 +31,14 @@ class WeatherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val tag = WeatherFragment::class.java.toString()
+        binding.progressBar.visibility = View.INVISIBLE
         binding.detailsContainer.visibility = View.INVISIBLE
 
         viewModel.weatherLiveData.observe(viewLifecycleOwner) {
+            binding.progressBar.visibility = View.INVISIBLE
+
             binding.location.text = it.name
             binding.updatedAt.text =
                 "Updated at: " + SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH).format(Date(
@@ -54,6 +58,7 @@ class WeatherFragment : Fragment() {
                 Locale.ENGLISH).format(Date(it.sys.sunset.toLong() * 1000))
 
             binding.detailsContainer.visibility = View.VISIBLE
+
         }
 
         binding.searchView.setQuery(getString(R.string.main_city), true)
@@ -61,6 +66,7 @@ class WeatherFragment : Fragment() {
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
+                    binding.progressBar.visibility = View.VISIBLE
                     viewModel.getWeatherInfo(query)
                 }
                 return true
@@ -78,4 +84,6 @@ class WeatherFragment : Fragment() {
             Log.e(tag, error)
         }
     }
+
+
 }
