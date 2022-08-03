@@ -1,4 +1,4 @@
-package com.github.qsubq.multiapp.app.presentation.screen
+package com.github.qsubq.multiapp.app.presentation.screen.weather
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

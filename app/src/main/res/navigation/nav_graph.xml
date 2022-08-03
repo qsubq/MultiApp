@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.github.qsubq.multiapp.app.presentation.screen.StartFragment"
+        android:name="com.github.qsubq.multiapp.app.presentation.screen.start.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
-        android:name="com.github.qsubq.multiapp.app.presentation.screen.WeatherFragment"
+        android:name="com.github.qsubq.multiapp.app.presentation.screen.weather.WeatherFragment"
         android:label="WeatherFragment" >
         <action
             android:id="@+id/action_weatherFragment_to_startFragment"
