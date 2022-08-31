@@ -10,4 +10,6 @@
     <string name="sunset">Sunset</string>
     <string name="sunrise">Sunrise</string>
     <string name="main_city">Saransk</string>
+    <string name="weather">Weather</string>
+    <string name="player">Player</string>
 </resources>

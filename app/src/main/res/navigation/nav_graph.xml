@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_startFragment_to_weatherFragment"
             app:destination="@id/weatherFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_playerFragment"
+            app:destination="@id/playerFragment" />
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
@@ -20,6 +23,15 @@
         android:label="WeatherFragment" >
         <action
             android:id="@+id/action_weatherFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.github.qsubq.multiapp.app.presentation.screen.player.PlayerFragment"
+        android:label="fragment_player"
+        tools:layout="@layout/fragment_player" >
+        <action
+            android:id="@+id/action_playerFragment_to_startFragment"
             app:destination="@id/startFragment" />
     </fragment>
 </navigation>

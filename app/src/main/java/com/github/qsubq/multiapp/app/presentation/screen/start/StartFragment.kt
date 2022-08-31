@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import com.github.qsubq.multiapp.app.presentation.adapter.AppAdapter
 import com.github.qsubq.multiapp.databinding.FragmentStartBinding
 
@@ -24,5 +25,6 @@ class StartFragment : Fragment() {
 
         val adapter = AppAdapter()
         binding.rcView.adapter = adapter
+        binding.rcView.layoutManager = GridLayoutManager(this.context,2)
     }
 }

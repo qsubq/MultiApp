@@ -13,17 +13,20 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_player"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_marginBottom="10dp" />
 
         <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seekbar_sound"
             android:layout_width="100dp"
             android:layout_height="10dp"
             android:layout_gravity="center"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"
+            android:progress="100"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.cardview.widget.CardView>
