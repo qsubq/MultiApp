@@ -24,7 +24,7 @@ class PlayerAdapter : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
         when (position) {
             0 -> holder.binding.imgPlayer.setImageResource(R.drawable.rain)
         }
-        val activity = holder.itemView.context as AppCompatActivity
+        val activity = holder.itemView.context
         val rainPlayer: MediaPlayer = MediaPlayer.create(activity, R.raw.rain)
         holder.binding.imgPlayer.setOnClickListener {
             when (position) {

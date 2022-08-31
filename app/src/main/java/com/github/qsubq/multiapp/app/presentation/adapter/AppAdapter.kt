@@ -19,21 +19,21 @@ class AppAdapter : RecyclerView.Adapter<AppAdapter.AppViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: AppViewHolder, position: Int) {
-        val activity = holder.itemView.context as AppCompatActivity
+        val context = holder.itemView.context as AppCompatActivity
         when (position) {
             0 -> {
-                holder.binding.itemTv.text = activity.getString(R.string.weather)
+                holder.binding.itemTv.text = context.getString(R.string.weather)
                 holder.binding.itemImage.setImageResource(R.mipmap.ic_weather_icon_round)
             }
             1->{
-                holder.binding.itemTv.text = activity.getString(R.string.player)
+                holder.binding.itemTv.text = context.getString(R.string.player)
             }
         }
 
         holder.itemView.setOnClickListener { v ->
 
             val navHostFragment =
-                activity.supportFragmentManager.findFragmentById(R.id.nav_fragment) as NavHostFragment
+                context.supportFragmentManager.findFragmentById(R.id.nav_fragment) as NavHostFragment
             val navController = navHostFragment.navController
             when (position) {
                 0 -> navController.navigate(R.id.action_startFragment_to_weatherFragment)
