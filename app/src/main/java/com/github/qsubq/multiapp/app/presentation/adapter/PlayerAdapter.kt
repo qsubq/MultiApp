@@ -40,6 +40,7 @@ class PlayerAdapter : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
         val forestWindPlayer: MediaPlayer = MediaPlayer.create(activity, R.raw.forest_wind)
         val grasshopperPlayer: MediaPlayer = MediaPlayer.create(activity, R.raw.grasshopper)
         val lightingPlayer: MediaPlayer = MediaPlayer.create(activity, R.raw.lighting)
+
         holder.binding.imgPlayer.setOnClickListener {
             when (position) {
                 0 -> {
@@ -127,6 +128,7 @@ class PlayerAdapter : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
                 riverPlayer.setVolume(volume, volume)
                 stormPlayer.setVolume(volume, volume)
                 birdPlayer.setVolume(volume, volume)
+
                 desertWindPlayer.setVolume(volume, volume)
                 forestWindPlayer.setVolume(volume, volume)
                 grasshopperPlayer.setVolume(volume, volume)
@@ -141,5 +143,4 @@ class PlayerAdapter : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
     override fun getItemCount(): Int {
         return 8
     }
-
 }
