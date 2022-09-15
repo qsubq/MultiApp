@@ -128,7 +128,6 @@ class PlayerAdapter : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
                 riverPlayer.setVolume(volume, volume)
                 stormPlayer.setVolume(volume, volume)
                 birdPlayer.setVolume(volume, volume)
-
                 desertWindPlayer.setVolume(volume, volume)
                 forestWindPlayer.setVolume(volume, volume)
                 grasshopperPlayer.setVolume(volume, volume)

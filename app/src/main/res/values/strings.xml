@@ -12,4 +12,5 @@
     <string name="main_city">Saransk</string>
     <string name="weather">Weather</string>
     <string name="player">Player</string>
+    <string name="Reminder">Push reminder</string>
 </resources>
