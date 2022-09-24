@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "711333952002",
+    "project_id": "multiapp-d466d",
+    "storage_bucket": "multiapp-d466d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711333952002:android:f6dfcc9bf99eda6700451b",
+        "android_client_info": {
+          "package_name": "com.github.qsubq.multiapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711333952002-4o6pe9g0ab6qrk7c27rko4fqr7fj6n4v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5drupZZ2RNFcEdv6l-tepkYiUvhpSumY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711333952002-4o6pe9g0ab6qrk7c27rko4fqr7fj6n4v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,10 +3,11 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.github.qsubq.multiapp"
@@ -35,12 +36,20 @@ android {
     buildFeatures{
         viewBinding true
     }
+    buildToolsVersion '31.0.0'
 }
 
 
 dependencies {
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:30.4.1')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-messaging'
+
     // Javax Inject
     api("javax.inject:javax.inject:1")
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.8'
 
     //Retrofit
     def retrofitVersion = "2.9.0"
@@ -56,11 +65,11 @@ dependencies {
     testImplementation "com.google.dagger:hilt-android-testing:$HiltVersion"
     kaptTest "com.google.dagger:hilt-compiler:$HiltVersion"
 
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.5.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment:2.5.1'
+    implementation 'androidx.navigation:navigation-fragment:2.5.2'
 
     //Mockito
     testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"

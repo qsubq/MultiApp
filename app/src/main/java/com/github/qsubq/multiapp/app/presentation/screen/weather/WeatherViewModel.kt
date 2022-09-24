@@ -27,6 +27,4 @@ class WeatherViewModel @Inject constructor(private val GetWeatherDataUseCase: Ge
             }
         }
     }
-
-
 }

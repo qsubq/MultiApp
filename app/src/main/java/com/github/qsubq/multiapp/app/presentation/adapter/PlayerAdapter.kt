@@ -14,9 +14,7 @@ class PlayerAdapter : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
-        val binding =
-            PlayerItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PlayerViewHolder(binding)
+        return PlayerViewHolder(PlayerItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
