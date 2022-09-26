@@ -31,7 +31,7 @@ class AppAdapter : RecyclerView.Adapter<AppAdapter.AppViewHolder>() {
             }
             2 -> {
                 holder.binding.itemTv.text = context.getString(R.string.Reminder)
-                holder.binding.itemImage.setImageResource(R.mipmap.ic_player_icon_round)
+                holder.binding.itemImage.setImageResource(R.mipmap.ic_reminder_icon_round)
             }
         }
 
