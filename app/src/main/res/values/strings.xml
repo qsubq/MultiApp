@@ -13,4 +13,8 @@
     <string name="weather">Weather</string>
     <string name="player">Player</string>
     <string name="Reminder">Push reminder</string>
+
+    <string name="select_time">Select time</string>
+    <string name="set_alarm">Set alarm</string>
+    <string name="cancel_alarm">Cancel alarm</string>
 </resources>
