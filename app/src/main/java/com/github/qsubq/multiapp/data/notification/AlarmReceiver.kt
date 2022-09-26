@@ -1,4 +1,4 @@
-package com.github.qsubq.multiapp.data
+package com.github.qsubq.multiapp.data.notification
 
 import android.app.Notification
 import android.app.PendingIntent
@@ -19,7 +19,7 @@ class AlarmReceiver : BroadcastReceiver() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         val pendingIntent = PendingIntent.getActivity(p0, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
-        val builder = Notification.Builder(p0, "foxandroid")
+        val builder = Notification.Builder(p0, "remindAndroid")
             .setSmallIcon(R.drawable.ic_launcher_background)
             .setContentTitle("Content Title")
             .setContentText("Content Text")

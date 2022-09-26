@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">MultiApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="author">qsubq</string>
+
     <string name="created_by">Created By</string>
     <string name="humidity">Humidity</string>
     <string name="pressure">Pressure</string>
@@ -11,10 +11,14 @@
     <string name="sunrise">Sunrise</string>
     <string name="main_city">Saransk</string>
     <string name="weather">Weather</string>
-    <string name="player">Player</string>
-    <string name="Reminder">Push reminder</string>
 
+    <string name="player">Player</string>
+
+    <string name="Reminder">Reminder</string>
     <string name="select_time">Select time</string>
     <string name="set_alarm">Set alarm</string>
     <string name="cancel_alarm">Cancel alarm</string>
+    <string name="hour_AM">%1$s : %2$s AM"</string>
+    <string name="hour_PM">%1$s : %2$s PM</string>
+
 </resources>

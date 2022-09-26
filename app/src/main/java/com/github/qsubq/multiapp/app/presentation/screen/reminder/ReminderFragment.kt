@@ -15,7 +15,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
-import com.github.qsubq.multiapp.data.AlarmReceiver
+import com.github.qsubq.multiapp.R
+import com.github.qsubq.multiapp.data.notification.AlarmReceiver
 import com.github.qsubq.multiapp.databinding.FragmentReminderBinding
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -24,9 +25,11 @@ import java.util.*
 class ReminderFragment : Fragment() {
     private lateinit var binding: FragmentReminderBinding
     private lateinit var picker: MaterialTimePicker
-    private lateinit var calendar: Calendar
-    private lateinit var alarmManager: AlarmManager
     private lateinit var pendingIntent: PendingIntent
+    private val alarmManager: AlarmManager by lazy {
+        activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+    }
+    private val calendar: Calendar by lazy { Calendar.getInstance() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,36 +44,24 @@ class ReminderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         createNotificationChanel()
 
-        binding.btnSelectTime.setOnClickListener {
-            showTimePicker()
-        }
-        binding.btnSet.setOnClickListener {
-            setAlarm()
-        }
-        binding.btnCancel.setOnClickListener {
-            cancelAlarm()
-        }
+        binding.btnSelectTime.setOnClickListener { showTimePicker() }
+        binding.btnSet.setOnClickListener { setAlarm() }
+        binding.btnCancel.setOnClickListener { cancelAlarm() }
     }
 
     private fun cancelAlarm() {
-        alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
         val intent = Intent(activity, AlarmReceiver::class.java)
         pendingIntent =
             PendingIntent.getBroadcast(activity, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-
         alarmManager.cancel(pendingIntent)
 
         Toast.makeText(activity, "Alarm cancel successfully", Toast.LENGTH_SHORT).show()
     }
 
     private fun setAlarm() {
-        alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
         val intent = Intent(activity, AlarmReceiver::class.java)
         pendingIntent =
             PendingIntent.getBroadcast(activity, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
 
         Toast.makeText(activity, "Alarm set successfully", Toast.LENGTH_LONG).show()
@@ -83,18 +74,18 @@ class ReminderFragment : Fragment() {
             .setMinute(0)
             .setTitleText("Select Alarm Time")
             .build()
-        activity?.let { picker.show(it.supportFragmentManager, "foxandroid") }
+        activity?.let { picker.show(it.supportFragmentManager, "remindAndroid") }
 
         picker.addOnPositiveButtonClickListener {
             if (picker.hour > 12) {
-                binding.tvTime.text =
-                    String.format("%02d", picker.hour - 12) + " : " + String.format("%02d",
-                        picker.minute) + " PM"
+                binding.tvTime.text = getString(R.string.hour_PM,
+                    String.format("%02d", picker.hour - 12),
+                    String.format("%02d", picker.minute))
             } else {
-                binding.tvTime.text =
-                    picker.hour.toString() + " : " + picker.minute.toString() + " AM"
+                binding.tvTime.text = getString(R.string.hour_AM,
+                    String.format("%02d", picker.hour),
+                    String.format("%02d", picker.minute))
             }
-            calendar = Calendar.getInstance()
             calendar[Calendar.HOUR_OF_DAY] = picker.hour
             calendar[Calendar.MINUTE] = picker.minute
             calendar[Calendar.SECOND] = 0
@@ -106,10 +97,10 @@ class ReminderFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     private fun createNotificationChanel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name: CharSequence = "foxandroidReminderChannel"
+            val name: CharSequence = "Remind"
             val desc = "Desc"
             val importance = NotificationManager.IMPORTANCE_HIGH
-            val notificationChannel = NotificationChannel("foxandroid", name, importance)
+            val notificationChannel = NotificationChannel("remindAndroid", name, importance)
             notificationChannel.description = desc
             activity?.let { getSystemService(it, NotificationManager::class.java) }
                 ?.createNotificationChannel(notificationChannel)
