@@ -8,7 +8,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(private val api: ApiService) : WeatherRepository {
-    override suspend fun getWeatherData(city:String): NetworkResult<WeatherModel> {
+    override suspend fun getWeatherData(city: String): NetworkResult<WeatherModel> {
         return handleApi { api.getWeatherInfo(city) }
     }
 
@@ -33,6 +33,7 @@ class WeatherRepositoryImpl @Inject constructor(private val api: ApiService) : W
 
 
     sealed class NetworkResult<T : Any> {
+        class Loading<T : Any> : NetworkResult<T>()
         class Success<T : Any>(val data: T) : NetworkResult<T>()
         class Error<T : Any>(val code: Int, val message: String?) : NetworkResult<T>()
         class Exception<T : Any>(val e: Throwable) : NetworkResult<T>()
